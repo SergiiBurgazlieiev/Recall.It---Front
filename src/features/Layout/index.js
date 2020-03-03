@@ -30,8 +30,6 @@ export default () => {
   const [parentDisableAutoSize, setParentDisableAutoSize] = useState(false);
 
   useEffect(() => {
-    console.log(this);
-    console.log("h", window.iFrameResizer);
     window.iFrameResizer = {
       readyCallback: () => {
         setParentIframe(window.parentIFrame);
@@ -52,15 +50,11 @@ export default () => {
   let getSize = () => {
     if (!displayProductsResult && !displayListOfProducts) {
       return [60, 60];
-    }
-
-    if (displayProductsResult && !displayListOfProducts) {
+    } else if (displayProductsResult && !displayListOfProducts) {
       return [250, 460];
-    }
-
-    if (!displayProductsResult && displayListOfProducts) {
+    } else if (!displayProductsResult && displayListOfProducts) {
       return [780, 500];
-    }
+    } else return [250, 460];
   };
 
   let updateSize = () => {
@@ -77,12 +71,12 @@ export default () => {
 
   useEffect(() => {
     updateSize();
-  }, [displayProductsResult, displayListOfProducts]);
+  }, [displayProductsResult, displayListOfProducts, parentIframe]);
 
   const retrieveProductData = async () => {
     try {
       let productsByName = await getProduct({
-        ProductName: product.productTitle,
+        ProductName: product.name,
         format: "json"
       });
 
@@ -109,13 +103,14 @@ export default () => {
 
     (async () => {
       try {
-        let data = await scrapProduct({ url: window.document.referrer });
+        let data = await scrapProduct({ url: params.url });
+
         if (data.success)
           setProduct({
-            image: data.image,
-            name: data.productTitle,
+            image: data.img,
+            name: data.title,
             by: data.by,
-            categorie: data.categorie,
+            categorie: data.categories[categories.length],
             isDataRequest: false
           });
         else

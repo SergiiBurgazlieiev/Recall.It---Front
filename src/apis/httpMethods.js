@@ -7,9 +7,15 @@ export const get = url => {
 };
 
 export const post = (url, data) => {
+  let headers = {
+    Accept: "application/json, text/plain, */*",
+    "Content-Type": "application/json"
+  };
+
   return fetch(url, {
     method: "POST",
-    body: data
+    headers,
+    body: JSON.stringify(data)
   })
     .then(response => response.json())
     .then(res => res);
