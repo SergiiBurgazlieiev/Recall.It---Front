@@ -1,8 +1,10 @@
 import React from "react";
 
-export default ({ showResults }) => (
+
+export default ({ showResults, icon }) => (
   <div>
     <div className="logo">
-      <div className="icon" onClick={() => showResults()}></div>
+      <img src={icon} alt="icon" onClick={() => showResults()} />
+  	</div>
   </div>
 );

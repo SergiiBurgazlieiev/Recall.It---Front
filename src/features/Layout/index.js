@@ -5,6 +5,10 @@ import Products from "../products";
 import Result from "../../components/result";
 import { parseQueryString } from "../../utils";
 import { getProduct, scrapProduct } from "../../apis/product";
+import iconRisky from "../../assets/images/risky.png"
+import iconMed from "../../assets/images/medium.png"
+import iconNeut from "../../assets/images/neutral.png"
+import iconNon from "../../assets/images/none.png"
 
 export default () => {
   const [displayProductsResult, setDisplayProductsResult] = useState(false);
@@ -28,6 +32,7 @@ export default () => {
   });
   const [parentIframe, setParentIframe] = useState(null);
   const [parentDisableAutoSize, setParentDisableAutoSize] = useState(false);
+  const [icon, setIcon] = useState(iconNeut);
 
   useEffect(() => {
     window.iFrameResizer = {
@@ -88,8 +93,17 @@ export default () => {
         Manufacturer: product.by,
         format: "json"
       });
-
       setState({ productsByName, productsByType, productsByManufacturer });
+
+      if(productsByManufacturer.length > 5 && productsByType.length > 5){
+        setIcon(iconMed);
+      }else if(productsByName.length > 0){
+        setIcon(iconRisky);
+      }else if(productsByName.length == 0 && productsByType.length ==0 && productsByManufacturer.length == 0){
+        setIcon(iconNon)
+      }else{
+        setIcon(iconNeut)
+      }
     } catch (err) {}
   };
 
@@ -163,6 +177,7 @@ export default () => {
           setDisplayProductsResult(!displayProductsResult);
           setDisplayListOfProducts(false);
         }}
+        icon={icon}
       />
     </div>
   );
