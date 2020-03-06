@@ -28,17 +28,13 @@ export default ({ resultsOff, ...props }) => {
           <h3>Recall.it</h3>
         </div>
         {elements.map((item, key) => {
-          if(get(props, item.propsName, "") !== 0){
-            return  <p
+          return  <p
             key={key}
             data-value={item.name}
             onClick={e => resultsOff(e.target.dataset.value)}
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
-          }else{
-            return null
-          }
          
         })}
       </div>
