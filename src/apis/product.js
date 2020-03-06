@@ -8,5 +8,5 @@ export const getProduct = data => {
 };
 
 export const scrapProduct = data => {
-  return post("https://product-scrap.herokuapp.com/scraping/get", data);
+  return post("https://recallit-back.herokuapp.com/scraping/get", data);
 };
