@@ -1,7 +1,7 @@
 import React from "react";
 
 export default ({ handleClick }) => {
-  const elements = ["Name", "Type", "Brand"];
+  const elements = ["Product", "Category", "Manufacturer"];
   return (
     <div className="listContainer">
       <ul className="listOfProductBtn">

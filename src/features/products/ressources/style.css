@@ -42,3 +42,13 @@
 .listOfProductBtn li:hover {
   text-decoration: underline;
 }
+
+.productLinks:hover{
+text-decoration: underline;
+cursor:pointer;
+}
+
+.productNoLinks:hover{
+  cursor: auto ;
+  text-decoration: none;
+}

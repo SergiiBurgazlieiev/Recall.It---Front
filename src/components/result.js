@@ -6,12 +6,12 @@ export default ({ resultsOff, ...props }) => {
     {
       name: "Name",
       propsName: "productsByNameNumber",
-      by: "name"
+      by: "product"
     },
     {
       name: "Type",
       propsName: "productsByTypeNumber",
-      by: "type"
+      by: "category"
     },
     {
       name: "Brand",
@@ -30,6 +30,7 @@ export default ({ resultsOff, ...props }) => {
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
             return  <p
+            className="productLinks"
             key={key}
             data-value={item.name}
             onClick={e => resultsOff(e.target.dataset.value)}
@@ -37,7 +38,14 @@ export default ({ resultsOff, ...props }) => {
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
           }else{
-            return null
+            return  <p
+            className="productNoLinks"
+            key={key}
+            data-value={item.name}
+            onClick={e => resultsOff(e.target.dataset.value)}
+          >
+            Found {get(props, item.propsName, "")} recalls by {item.by}
+          </p>
           }
          
         })}

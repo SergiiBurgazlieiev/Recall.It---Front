@@ -8,11 +8,11 @@ export default ({ prdValue, productsData }) => {
   const [filterBy, setFilterBy] = useState(prdValue);
   const getProducts = value => {
     switch (value) {
-      case "Name":
+      case "Product":
         return get(productsData, "0", []);
-      case "Type":
+      case "Category":
         return get(productsData, "1", []);
-      case "Brand":
+      case "Manufacturer":
         return get(productsData, "2", []);
       default:
         return [];
