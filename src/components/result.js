@@ -1,26 +1,33 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
   const elements = [
     {
-      name: "Name",
+      name: "Product",
       propsName: "productsByNameNumber",
       by: "product"
     },
     {
-      name: "Type",
+      name: "Category",
       propsName: "productsByTypeNumber",
       by: "category"
     },
     {
-      name: "Brand",
+      name: "Manufacturer",
       propsName: "productsByManufacturerNumber",
       by: "manufacturer"
     }
   ];
-  console.log("elements")
-  console.log(get(props, elements[0].propsName, ""))
+
+  const [productNameVal,setProductNameVal] = useState([]); 
+
+  let elem = [];
+  let handleProdNameVal = (value) => {
+    elem.push(value);
+    return elem
+  };
+
   return (
     <div>
       <div className="resultWindow">
@@ -29,20 +36,25 @@ export default ({ resultsOff, ...props }) => {
         </div>
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
+            // setProductNameVal(productNameVal.push(item.name));
+            // {handleProdNameVal(item.name)}
+
             return  <p
             className="productLinks"
             key={key}
             data-value={item.name}
-            onClick={e => resultsOff(e.target.dataset.value)}
+            onClick={e => {
+              resultsOff(e.target.dataset.value, elem)
+              }
+            }
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
           }else{
+            {handleProdNameVal(item.name)}
             return  <p
             className="productNoLinks"
             key={key}
-            data-value={item.name}
-            onClick={e => resultsOff(e.target.dataset.value)}
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>

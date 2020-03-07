@@ -1,11 +1,13 @@
 import React from "react";
 
-export default ({ handleClick }) => {
+export default ({ handleClick, prdLinks }) => {
   const elements = ["Product", "Category", "Manufacturer"];
+  console.log(prdLinks[0]);
+  console.log(elements);
   return (
     <div className="listContainer">
       <ul className="listOfProductBtn">
-        {elements.map((item, key) => (
+        {prdLinks[0].map((item, key) => (
           <li key={key} onClick={e => handleClick(e)}>
             {item}
           </li>

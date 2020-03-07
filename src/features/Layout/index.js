@@ -33,7 +33,7 @@ export default () => {
   const [parentIframe, setParentIframe] = useState(null);
   const [parentDisableAutoSize, setParentDisableAutoSize] = useState(false);
   const [icon, setIcon] = useState(iconNeut);
-
+  const [productName, setProductName] = useState([]);
   useEffect(() => {
     window.iFrameResizer = {
       readyCallback: () => {
@@ -146,7 +146,9 @@ export default () => {
       }
     })();
   }, []);
-
+  
+  console.log("product name")
+  console.log(productName);
   return (
     <div className="App">
       {displayProductsResult ? (
@@ -154,10 +156,11 @@ export default () => {
           productsByNameNumber={state.productsByName.length}
           productsByTypeNumber={state.productsByType.length}
           productsByManufacturerNumber={state.productsByManufacturer.length}
-          resultsOff={val => {
+          resultsOff={(val, prodName) => {
             setDisplayProductsResult(!displayProductsResult);
             setDisplayListOfProducts(!displayListOfProducts);
             setProductValue(val);
+            setProductName(productName => [...productName, prodName]);
           }}
         />
       ) : null}
@@ -169,6 +172,7 @@ export default () => {
             state.productsByType,
             state.productsByManufacturer
           ]}
+          prdName={productName}
         />
       ) : null}
       <Logo
