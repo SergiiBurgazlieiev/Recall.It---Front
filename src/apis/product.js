@@ -8,5 +8,6 @@ export const getProduct = data => {
 };
 
 export const scrapProduct = data => {
+  console.log(data);
   return post("https://recallit-back.herokuapp.com/scraping/get", data);
 };
