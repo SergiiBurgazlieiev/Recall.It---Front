@@ -32,7 +32,7 @@
 
 .listOfProductBtn li {
   display: inline-block;
-  padding-left: 1rem;
+  padding-left: 2rem;
   font-size: 1.3rem;
   cursor: pointer;
   font-weight: 400;
@@ -42,3 +42,15 @@
 .listOfProductBtn li:hover {
   text-decoration: underline;
 }
+
+.productLinks:hover{
+text-decoration: underline;
+cursor:pointer;
+}
+
+.productNoLinks:hover{
+  cursor: auto ;
+  text-decoration: none;
+}
+
+

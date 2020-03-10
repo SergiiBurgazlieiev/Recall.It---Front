@@ -4,15 +4,15 @@ import ProductItem from "./components/productItem";
 import ProductFilter from "./components/productFilter";
 import "./ressources/style.css";
 
-export default ({ prdValue, productsData }) => {
+export default ({ prdValue, productsData, prdName }) => {
   const [filterBy, setFilterBy] = useState(prdValue);
   const getProducts = value => {
     switch (value) {
-      case "Name":
+      case "Product":
         return get(productsData, "0", []);
-      case "Type":
+      case "Category":
         return get(productsData, "1", []);
-      case "Brand":
+      case "Manufacturer":
         return get(productsData, "2", []);
       default:
         return [];
@@ -22,6 +22,7 @@ export default ({ prdValue, productsData }) => {
   return (
     <div className="listOfProducts">
       <ProductFilter
+        prdLinks={prdName}
         handleClick={e => {
           setFilterBy(e.currentTarget.textContent);
         }}
