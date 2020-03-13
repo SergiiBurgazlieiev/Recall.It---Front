@@ -36,7 +36,6 @@ export default ({ resultsOff, ...props }) => {
         </div>
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
-            // setProductNameVal(productNameVal.push(item.name));
             {handleProdNameVal(item.name)}
 
             return  <p
