@@ -37,7 +37,7 @@ export default ({ resultsOff, ...props }) => {
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
             // setProductNameVal(productNameVal.push(item.name));
-            // {handleProdNameVal(item.name)}
+            {handleProdNameVal(item.name)}
 
             return  <p
             className="productLinks"
@@ -51,7 +51,6 @@ export default ({ resultsOff, ...props }) => {
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
           }else{
-            {handleProdNameVal(item.name)}
             return  <p
             className="productNoLinks"
             key={key}
