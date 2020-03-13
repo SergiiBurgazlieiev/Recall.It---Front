@@ -50,6 +50,7 @@ export default ({ resultsOff, ...props }) => {
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
           }else{
+            {handleProdNameVal(item.name)}
             return  <p
             className="productNoLinks"
             key={key}
