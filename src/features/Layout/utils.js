@@ -11,6 +11,8 @@ import { parseQueryString } from "../../utils";
 export const getData = async () => {
   let { by, title, category } = parseQueryString();
 
+  let categories = category.split("_");
+
   let dataByTitle = await scrapTitleDetails({ title: decodeURI(title) });
 
   let manufacturerAprox = await scrapManufacturerApprox({
@@ -19,12 +21,17 @@ export const getData = async () => {
   let manufacturerDetails = await scrapManufacturerDetails({
     manufacturer: manufacturerAprox.manufacturer_approx
   });
-  let categoryAprox = await scrapCategoryApprox({
-    category: decodeURI(category)
-  });
-  let categoryDetails = await scrapCategoryDetails({
-    category: get(categoryAprox, "category_approx", "")
-  });
+  let categoryDetails = "";
+  for (let i = 0; i < categories.length; i++) {
+    let categoryAprox = await scrapCategoryApprox({
+      category: decodeURI(category)
+    });
+    categoryDetails = await scrapCategoryDetails({
+      category: get(categoryAprox, "category_approx", "")
+    });
+
+    if (get(categoryDetails, "results_category", []).length > 0) break;
+  }
 
   let productsByManufacturer = get(
     manufacturerDetails,
