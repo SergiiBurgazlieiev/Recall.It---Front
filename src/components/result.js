@@ -33,9 +33,8 @@ export default ({ resultsOff, ...props }) => {
           <h3>Recall.it</h3>
         </div>
         {elements.map((item, key) => {
-          if (get(props, item.propsName, "") !== 0) {
-            // setProductNameVal(productNameVal.push(item.name));
-            // {handleProdNameVal(item.name)}
+          if(get(props, item.propsName, "") !== 0){
+            {handleProdNameVal(item.name)}
 
             return (
               <p
@@ -50,9 +49,6 @@ export default ({ resultsOff, ...props }) => {
               </p>
             );
           } else {
-            {
-              handleProdNameVal(item.name);
-            }
             return (
               <p className="productNoLinks" key={key}>
                 Found {get(props, item.propsName, "")} recalls by {item.by}
