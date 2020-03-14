@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
@@ -19,8 +19,6 @@ export default ({ resultsOff, ...props }) => {
       by: "manufacturer"
     }
   ];
-
-  const [productNameVal, setProductNameVal] = useState([]);
 
   let elem = [];
   let handleProdNameVal = value => {
