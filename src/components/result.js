@@ -36,24 +36,25 @@ export default ({ resultsOff, ...props }) => {
           if(get(props, item.propsName, "") !== 0){
             {handleProdNameVal(item.name)}
 
-            return (
-              <p
-                className="productLinks"
-                key={key}
-                data-value={item.name}
-                onClick={e => {
-                  resultsOff(e.target.dataset.value, elem);
-                }}
-              >
-                Found {get(props, item.propsName, "")} recalls by {item.by}
-              </p>
-            );
-          } else {
-            return (
-              <p className="productNoLinks" key={key}>
-                Found {get(props, item.propsName, "")} recalls by {item.by}
-              </p>
-            );
+            return  <p
+            className="productLinks"
+            key={key}
+            data-value={item.name}
+            onClick={e => {
+              resultsOff(e.target.dataset.value, elem)
+              }
+            }
+          >
+            Found {get(props, item.propsName, "")} recalls by {item.by}
+          </p>
+          }else{
+            return  <p
+            className="productNoLinks"
+            key={key}
+          >
+            Found {get(props, item.propsName, "")} recalls by {item.by}
+          </p>
+
           }
         })}
       </div>

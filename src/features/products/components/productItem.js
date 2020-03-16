@@ -19,7 +19,9 @@ export default ({ product }) => {
           className="imgWindow"
         />
         <div style={{}}>
-          <p>{get(product, "title", "")}</p>
+
+          <a href={get(product, "URL", "")}>{get(product, "Title", "")}</a>
+
           <p
             style={{
               width: "173px",
