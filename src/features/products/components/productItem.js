@@ -14,16 +14,14 @@ export default ({ product }) => {
         }}
       >
         <img
-          src={get(
-            product,
-            ["Images", "0", "URL"],
-            "https://dapp.dblog.org/img/default.jpg"
-          )}
+          src={get(product, "image", "https://dapp.dblog.org/img/default.jpg")}
           alt="n/a"
           className="imgWindow"
         />
         <div style={{}}>
+
           <a href={get(product, "URL", "")}>{get(product, "Title", "")}</a>
+
           <p
             style={{
               width: "173px",
@@ -36,23 +34,24 @@ export default ({ product }) => {
               fontstyle: "italic"
             }}
           >
-            recalled date
-            {moment(get(product, "RecallDate", "")).isValid()
-              ? moment(product.RecallDate).format("MMM DD, YYYY")
+            recalled date{" "}
+            {moment(get(product, "recalldate", "")).isValid()
+              ? moment(product.recalldate).format("MMM DD, YYYY")
               : ""}
           </p>
           {showDetails && (
             <div>
               <p>
-                <b>Hazard</b> {get(product, ["Hazards", "0", "Name"], "")}{" "}
+                <b>Hazard</b> {get(product, "title", "")}{" "}
               </p>
               <p>
-                <b>Description</b> {get(product, "Description", "")}{" "}
+                <b>Description</b> {get(product, "description", "")}{" "}
               </p>
             </div>
           )}
         </div>
       </div>
+
       <div
         style={{
           cursor: "pointer",

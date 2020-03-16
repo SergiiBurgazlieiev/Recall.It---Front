@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
@@ -20,12 +20,10 @@ export default ({ resultsOff, ...props }) => {
     }
   ];
 
-  const [productNameVal,setProductNameVal] = useState([]); 
-
   let elem = [];
-  let handleProdNameVal = (value) => {
+  let handleProdNameVal = value => {
     elem.push(value);
-    return elem
+    return elem;
   };
 
   return (
@@ -56,6 +54,7 @@ export default ({ resultsOff, ...props }) => {
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
+
           }
         })}
       </div>
