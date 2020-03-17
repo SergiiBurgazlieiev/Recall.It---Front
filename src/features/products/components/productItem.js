@@ -24,7 +24,7 @@ export default ({ product }) => {
         />
         <div style={{}}>
 
-          <a>{get(product, "Title", "")}</a>
+          <p>{get(product, "Title", "")}</p>
 
           <p
             style={{
