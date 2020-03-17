@@ -5,9 +5,9 @@ import moment from "moment";
 export default ({ product }) => {
   const [showDetails, setShowDetails] = useState(false);
   console.log("get product")
-  console.log(get(product));
+  console.log(get(product, ));
   console.log("get URL");
-  console.log(get(product, "URL", ""));
+  console.log(get(product, "URL"));
   return (
     <div style={{ marginBottom: "13px" }}>
       <div
@@ -24,7 +24,7 @@ export default ({ product }) => {
         />
         <div style={{}}>
 
-          <a href={get(product, "URL", "")}>{get(product, "Title", "")}</a>
+          <a>{get(product, "Title", "")}</a>
 
           <p
             style={{
