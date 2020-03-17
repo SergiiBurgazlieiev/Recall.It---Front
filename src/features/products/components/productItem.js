@@ -4,6 +4,10 @@ import moment from "moment";
 
 export default ({ product }) => {
   const [showDetails, setShowDetails] = useState(false);
+  console.log("get product")
+  console.log({get(product, "Title", "")});
+  console.log("get URL");
+  console.log({get(product, "URL", "")});
   return (
     <div style={{ marginBottom: "13px" }}>
       <div
