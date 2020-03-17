@@ -6,10 +6,7 @@ export default ({ product }) => {
   const [showDetails, setShowDetails] = useState(false);
   console.log("get product")
   console.log(get(product, "Title", ""));
-  console.log("get URL");
-  console.log(get(product, "url", ""));
-  console.log('this is just product');
-  console.log(product);
+  console.log(get(product, "", ""));
   return (
     <div style={{ marginBottom: "13px" }}>
       <div
@@ -25,9 +22,7 @@ export default ({ product }) => {
           className="imgWindow"
         />
         <div style={{}}>
-
-          <a href={get(product, "url", "")} target="_blank">Product Name</a>
-
+          <a href={get(product, "url", "")} target="_blank">{get(product, "Title", "")}</a>
           <p
             style={{
               width: "173px",
