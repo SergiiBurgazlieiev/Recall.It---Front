@@ -26,7 +26,7 @@ export default ({ product }) => {
         />
         <div style={{}}>
 
-          <a href={get(product, "url", "")}>{get(product, "Title")}</a>
+          <a href={get(product, "url", "")}>Product Name</a>
 
           <p
             style={{
