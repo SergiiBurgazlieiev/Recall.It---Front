@@ -8,6 +8,7 @@ export default ({ product }) => {
   console.log(get(product, ));
   console.log("get URL");
   console.log(get(product, "URL"));
+  console.log(product)
   return (
     <div style={{ marginBottom: "13px" }}>
       <div
@@ -24,7 +25,7 @@ export default ({ product }) => {
         />
         <div style={{}}>
 
-          <p>{get(product, "Title", "")}</p>
+          <p>{get(product, "title", "")}</p>
 
           <p
             style={{
