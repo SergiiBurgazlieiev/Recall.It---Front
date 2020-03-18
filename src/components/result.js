@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
+  const [productTitle, setProductTitle] = useState("")
   const elements = [
     {
       name: "Product",
@@ -19,17 +20,15 @@ export default ({ resultsOff, ...props }) => {
       by: "manufacturer"
     }
   ];
-
   let elem = [];
   let handleProdNameVal = value => {
     elem.push(value);
     return elem;
   };
-
-  let getProdTitle = () => {
-    let prodTitle = document.getElementById('twotabsearchtextbox').value;
-    return prodTitle;
-  }
+  
+  useEffect(()=>{
+      setProductTitle(document.getElementById('twotabsearchtextbox').value);
+  })
   return (
     <div>
       <div className="resultWindow">
@@ -61,7 +60,7 @@ export default ({ resultsOff, ...props }) => {
 
           }
         })}
-        <p>{getProdTitle()}</p>
+        <p>{productTitle}</p>
       </div>
     </div>
   );
