@@ -22,7 +22,15 @@ export default ({ product }) => {
           className="imgWindow"
         />
         <div style={{}}>
-          <a href={get(product, "url", "")} target="_blank">{get(product, "Title", "")}</a>
+          <p>
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href={get(product, "url", "")}
+              target="_blank"
+            >
+              {get(product, "title", "")}
+            </a>
+          </p>
           <p
             style={{
               width: "173px",
@@ -43,7 +51,7 @@ export default ({ product }) => {
           {showDetails && (
             <div>
               <p>
-                <b>Hazard</b> {get(product, "title", "")}{" "}
+                <b>Hazard</b> {get(product, "hazard", "")}{" "}
               </p>
               <p>
                 <b>Description</b> {get(product, "description", "")}{" "}
