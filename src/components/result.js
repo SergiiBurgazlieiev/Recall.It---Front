@@ -27,7 +27,11 @@ export default ({ resultsOff, ...props }) => {
   };
   
   useEffect(()=>{
-      setProductTitle(document.getElementById('twotabsearchtextbox').value);
+    window.chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
+      // setProductTitle(document.getElementById('twotabsearchtextbox').value);
+      console.log("value of search box");
+      console.log(message.searchBox)
+    })
   })
   return (
     <div>
