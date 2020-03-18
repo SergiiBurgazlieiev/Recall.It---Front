@@ -10,6 +10,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     productTitle: document.querySelector("#productTitle").outerText,
     by: document.querySelector("#bylineInfo").outerText,
     categorie: category[category.length - 1].outerText,
-    url: window.location.href
+    url: window.location.href,
+    searchBox: document.getElementById("twotabsearchtextbox").value
   });
+});
+
+chrome.runtime.sendMessage({
+    searchBox: document.getElementById('twotabsearchtextbox').value
 });
