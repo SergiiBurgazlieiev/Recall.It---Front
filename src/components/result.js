@@ -26,6 +26,10 @@ export default ({ resultsOff, ...props }) => {
     return elem;
   };
 
+  let getProdTitle = () => {
+    let prodTitle = document.getElementById('twotabsearchtextbox').value;
+    return prodTitle;
+  }
   return (
     <div>
       <div className="resultWindow">
@@ -57,6 +61,7 @@ export default ({ resultsOff, ...props }) => {
 
           }
         })}
+        <p>{getProdTitle()}</p>
       </div>
     </div>
   );
