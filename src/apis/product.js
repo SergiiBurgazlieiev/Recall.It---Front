@@ -34,3 +34,17 @@ export const scrapManufacturerApprox = data => {
     data
   );
 };
+
+export const scrapboyandgirlValues = data => {
+  return post(
+    "https://recallit-back.herokuapp.com/scraping/get/boyandgirl_values",
+    data
+  );
+};
+
+export const scrapdiagnosisdispositionValues = data => {
+  return post(
+    "https://recallit-back.herokuapp.com/scraping/get/diagnosisdisposition_values",
+    data
+  );
+};
