@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
-  const [productTitle, setProductTitle] = useState("")
   const elements = [
     {
       name: "Product",
@@ -20,19 +19,15 @@ export default ({ resultsOff, ...props }) => {
       by: "manufacturer"
     }
   ];
+
+  const [productNameVal,setProductNameVal] = useState([]); 
+
   let elem = [];
-  let handleProdNameVal = value => {
+  let handleProdNameVal = (value) => {
     elem.push(value);
-    return elem;
+    return elem
   };
-  
-  useEffect(()=>{
-    window.chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
-      // setProductTitle(document.getElementById('twotabsearchtextbox').value);
-      console.log("value of search box");
-      console.log(message.searchBox)
-    })
-  })
+
   return (
     <div>
       <div className="resultWindow">
@@ -61,10 +56,11 @@ export default ({ resultsOff, ...props }) => {
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
-
           }
         })}
-        <p>{productTitle}</p>
+          <p data-value="Neiss" onClick={ e => {
+            resultsOff(e.target.dataset.value, elem)
+          }}>Click here to learn more about emergency rooms related to this category</p>
       </div>
     </div>
   );
