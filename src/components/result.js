@@ -25,7 +25,7 @@ export default ({ resultsOff, ...props }) => {
   let elem = [];
   let handleProdNameVal = (value) => {
     elem.push(value);
-    return elem
+    return null
   };
 
   return (
@@ -58,6 +58,7 @@ export default ({ resultsOff, ...props }) => {
           </p>
           }
         })}
+          {handleProdNameVal("Neiss")}
           <p data-value="Neiss" onClick={ e => {
             resultsOff(e.target.dataset.value, elem)
           }}>Click here to learn more about emergency rooms related to this category</p>

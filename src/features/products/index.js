@@ -27,11 +27,17 @@ export default ({ prdValue, productsData, prdName }) => {
           setFilterBy(e.currentTarget.textContent);
         }}
       />
-      <div className="productContainer">
-        {getProducts(filterBy).map((product, key) => (
-          <ProductItem key={key} product={product} />
-        ))}
-      </div>
+    {/*if current link is not Neiss return ProductItem component*/}
+      {filterBy !== 'Neiss' ? (
+         <div className="productContainer">
+             {getProducts(filterBy).map((product, key) => (
+                <ProductItem key={key} product={product} />
+             ))}
+         </div>
+      ):  <div className="productContainer">
+            <p>Chart pie</p>
+          </div>
+      }  
     </div>
   );
 };
