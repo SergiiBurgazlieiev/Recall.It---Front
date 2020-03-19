@@ -59,7 +59,7 @@ export default ({ resultsOff, ...props }) => {
           }
         })}
           {handleProdNameVal("Neiss")}
-          <p data-value="Neiss" onClick={ e => {
+          <p className="productLinks" data-value="Neiss" onClick={ e => {
             resultsOff(e.target.dataset.value, elem)
           }}>Click here to learn more about emergency rooms related to this category</p>
       </div>
