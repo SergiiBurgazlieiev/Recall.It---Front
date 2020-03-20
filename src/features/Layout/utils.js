@@ -29,7 +29,10 @@ export const getData = async () => {
     categoryDetails = await scrapCategoryDetails({
       category: get(categoryAprox, "category_approx", "")
     });
-
+    console.log("categoryDetails")
+    console.log(categoryDetails);
+    console.log("categoryAprox");
+    console.log(categoryAprox);
     if (get(categoryDetails, "results_category", []).length > 0) break;
   }
 
