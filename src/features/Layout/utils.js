@@ -48,6 +48,7 @@ export const getData = async () => {
   };
 };
 
+<<<<<<< HEAD
 
 getData()
 .then(response=>{
@@ -57,6 +58,8 @@ getData()
   console.log(e);
 });
 
+=======
+>>>>>>> b172e04b03eb0af3054c649f26c23b99e506787e
 export const getSize = (displayProductsResult, displayListOfProducts) => {
   if (!displayProductsResult && !displayListOfProducts) {
     return [60, 60];
