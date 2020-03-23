@@ -14,8 +14,7 @@ class Neiss extends Component {
         super(props);
 
         this.state = {
-            dataSet:props.data,
-            //dataSet:[],
+            dataSet:[],
             allTypesOfDiagnosis:{},
             allTypesOfDisposition: {},
             suggestions: [],
@@ -64,7 +63,7 @@ class Neiss extends Component {
     };
 
     componentDidMount(){
-        //Fetch data here.
+        //Fetch data from MongoDB here.
         let result = this.getCategoryAproxData();  
         this.getSuggestions();
         this.getPieChartsData();
@@ -113,6 +112,7 @@ class Neiss extends Component {
                 9: 'Other'
             },
             searchTerm: result.category_approx
+            //dataSet: response.data NEED TO BE FETCH FROM MONGO DB
         });
     }
 
