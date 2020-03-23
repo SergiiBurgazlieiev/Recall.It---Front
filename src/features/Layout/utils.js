@@ -48,6 +48,15 @@ export const getData = async () => {
   };
 };
 
+
+getData()
+.then(response=>{
+  console.log('MY RESPONSE IS', response);
+})
+.catch(e => {
+  console.log(e);
+});
+
 export const getSize = (displayProductsResult, displayListOfProducts) => {
   if (!displayProductsResult && !displayListOfProducts) {
     return [60, 60];
