@@ -37,13 +37,9 @@ export default ({ prdValue, productsData, prdName }) => {
              ))}
          </div>
       ):  <div className="productContainer">
-<<<<<<< HEAD
             <Analytics />
-=======
-            <p>Chart pie</p>
->>>>>>> b172e04b03eb0af3054c649f26c23b99e506787e
           </div>
-      }  
+      }
     </div>
   );
 };
