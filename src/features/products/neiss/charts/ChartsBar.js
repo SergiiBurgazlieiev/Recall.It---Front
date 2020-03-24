@@ -3,13 +3,12 @@ import { Bar } from 'react-chartjs-2';
 
 import styles from './ChartsBar.module.css';
 
-class Charts extends Component {
+class ChartsBar extends Component {
     constructor(props){
         super(props);
 
         this.state = {
             chartAges: props.data
-           
         }
     }
 
@@ -41,10 +40,14 @@ class Charts extends Component {
 
     render(){
         let data = this.state.chartAges();
+        if(data === 'undefined'){
+            return null;
+        }
         return (
             <div className={styles.Container}>
                 <div className={styles.Age}>
                     <Bar
+                        height={200} 
                         data={data.totalAgesBoysAndGirls}
                         options= {{
                             scales: this.props.scale,
@@ -68,4 +71,4 @@ class Charts extends Component {
     }
 }
 
-export default Charts;
+export default ChartsBar;

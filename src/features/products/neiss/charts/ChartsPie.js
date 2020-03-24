@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2';
 
 import styles from './ChartsPie.module.css';
 
-class Charts extends Component {
+class ChartsPie extends Component {
     constructor(props){
         super(props);
 
@@ -25,10 +25,14 @@ class Charts extends Component {
 
     render(){
         let data = this.state.chartOne();
+        if(data === 'undefined'){
+            return null;
+        }
         return (
             <div className={styles.Container}>
                 <div className={styles.Diagnosis}>
                     <Pie 
+                        height={200} 
                         data={data.dataDiagnosis}
                         options={{
                             title:{
@@ -47,6 +51,7 @@ class Charts extends Component {
                 </div>
                 <div className={styles.Disposition}>
                     <Pie 
+                        height={220} 
                         data={data.dataDisposition}
                         options={{
                             title:{
@@ -68,4 +73,4 @@ class Charts extends Component {
     }
 }
 
-export default Charts;
+export default ChartsPie;
