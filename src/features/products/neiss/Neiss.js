@@ -24,7 +24,7 @@ class Neiss extends Component {
     }
 
     getCategoryAproxData = async () => {
-        let { category } = parseQueryString();
+        let { category } = await parseQueryString();
         let categories = category.split('_');
         let categoryDetails = '';
         let categoryAprox;
