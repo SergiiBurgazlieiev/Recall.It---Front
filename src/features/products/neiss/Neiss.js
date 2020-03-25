@@ -11,7 +11,6 @@ import { parseQueryString } from '../../../utils/index';
 class Neiss extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             category: {},
             boysCount: [],
@@ -33,6 +32,9 @@ class Neiss extends Component {
             category: decodeURI(category)
             }).then(response => {
                 console.log(response);
+                this.setState({
+                    category: {'category': response.category_approx }
+                });
             }).catch(err => {
                 console.log(err);
             });
@@ -46,10 +48,7 @@ class Neiss extends Component {
     };
 
     async componentDidMount(){
-        const result = this.getCategoryAproxData(); 
-        await this.setState({
-            category: {'category': result.category_approx }
-        });
+        await this.getCategoryAproxData(); 
 
         Promise.all([scrapboyandgirlValues(this.state.category), scrapdiagnosisdispositionValues(this.state.category)])
         .then(([barChartValues, pieChartValue])=>{
@@ -81,7 +80,6 @@ class Neiss extends Component {
                     backgroundColor: randomColor({
                         hue: '#48A1D9',
                         luminosity: 'light'
-                        
                     }),
                     label: 'Count Of Girls\' Cases',
                     borderColor: 'rgba(15, 50, 64, .8)',
@@ -100,7 +98,6 @@ class Neiss extends Component {
 
                 labels: ['1','2','3','4','5','6','7','8', '9', '10', '11']
             }
-            
         }
         return chartAges;
     }
@@ -142,19 +139,14 @@ class Neiss extends Component {
                 ]
             }
         } 
-
         return dataChart;
     }
 
     render(){
         return(
             <Fragment>
-                <ChartsPie 
-                    data={this.getPieChartsData} 
-                />
-                <ChartsBar 
-                    data={this.chartAgeGetData}
-                />
+                <ChartsPie data={this.getPieChartsData} />
+                <ChartsBar data={this.chartAgeGetData} />
             </Fragment>
         );
     }
