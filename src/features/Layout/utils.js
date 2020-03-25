@@ -10,7 +10,7 @@ import { parseQueryString } from "../../utils";
 
 export const getData = async () => {
   let { by, title, category } = await parseQueryString();
-
+  
   let categories = category.split("_");
 
   let dataByTitle = await scrapTitleDetails({ title: decodeURI(title) });
