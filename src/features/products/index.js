@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import get from "lodash/get";
 import ProductItem from "./components/productItem";
 import ProductFilter from "./components/productFilter";
+import Analytics from './Analytics';
 import "./ressources/style.css";
+
 
 export default ({ prdValue, productsData, prdName }) => {
   const [filterBy, setFilterBy] = useState(prdValue);
@@ -35,9 +37,9 @@ export default ({ prdValue, productsData, prdName }) => {
              ))}
          </div>
       ):  <div className="productContainer">
-            <p>Chart pie</p>
+            <Analytics />
           </div>
-      }  
+      }
     </div>
   );
 };

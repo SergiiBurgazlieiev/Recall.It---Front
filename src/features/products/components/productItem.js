@@ -27,6 +27,7 @@ export default ({ product }) => {
               style={{ color: "black", textDecoration: "none" }}
               href={get(product, "url", "")}
               target="_blank"
+              rel="noopener noreferrer"
             >
               {get(product, "title", "")}
             </a>
