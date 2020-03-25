@@ -45,7 +45,6 @@ class Neiss extends Component {
     //         });
     //         if (get(categoryDetails, 'results_category', []).length > 0) break;
     //     }
-    //     return categoryAprox;
     // };
 
     async componentDidMount(){

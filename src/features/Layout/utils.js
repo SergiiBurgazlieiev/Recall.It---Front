@@ -27,12 +27,6 @@ export const getData = async () => {
     categoryAprox = await scrapCategoryApprox({
       category: decodeURI(category)
     })
-    .then(response =>{
-      console.log(response, 'RESPONSE FROM GET DATA');
-    })
-    .catch(er => {
-      console.log(er);
-    });
 
     categoryDetails = await scrapCategoryDetails({
       category: get(categoryAprox, "category_approx", "")
@@ -48,12 +42,19 @@ export const getData = async () => {
   );
   let productsByName = get(dataByTitle, "results_title", []);
   let productsByType = get(categoryDetails, "results_category", []);
+  let result = categoryAprox
+  .then(response =>{
+    console.log(response, 'RESPONSE FROM GET DATA');
+  })
+  .catch(er => {
+    console.log(er);
+  });
 
   return {
     productsByManufacturer,
     productsByName,
     productsByType,
-    categoryAprox
+    result
   };
 };
 
