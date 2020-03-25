@@ -9,7 +9,7 @@ import {
 import { parseQueryString } from "../../utils";
 
 export const getData = async () => {
-  let { by, title, category } = parseQueryString();
+  let { by, title, category } = await parseQueryString();
 
   let categories = category.split("_");
 
@@ -41,13 +41,6 @@ export const getData = async () => {
   );
   let productsByName = get(dataByTitle, "results_title", []);
   let productsByType = get(categoryDetails, "results_category", []);
-  // let result = categoryAprox
-  // .then(response =>{
-  //   console.log(response, 'RESPONSE FROM GET DATA');
-  // })
-  // .catch(er => {
-  //   console.log(er);
-  // });
 
   return {
     productsByManufacturer,
@@ -55,8 +48,6 @@ export const getData = async () => {
     productsByType
   };
 };
-
-//console.log(getData());
 
 export const getSize = (displayProductsResult, displayListOfProducts) => {
   if (!displayProductsResult && !displayListOfProducts) {
