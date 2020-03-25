@@ -3,7 +3,6 @@ import ChartsPie from './charts/ChartsPie';
 import ChartsBar from './charts/ChartsBar';
 import randomColor from 'randomcolor';
 import { scrapboyandgirlValues, scrapdiagnosisdispositionValues } from '../../../apis/product';
-import { getData } from '../../Layout/utils';
 //This import needed in order to recieve 'category_aprox';
 import get from 'lodash/get';
 import { scrapCategoryApprox, scrapCategoryDetails } from '../../../apis/product';
@@ -24,7 +23,7 @@ class Neiss extends Component {
     }
 
     getCategoryAproxData = async () => {
-        let { category } = await parseQueryString();
+        let { category } = parseQueryString();
         let categories = category.split('_');
         let categoryDetails = '';
         let categoryAprox;
@@ -48,7 +47,7 @@ class Neiss extends Component {
     };
 
     async componentDidMount(){
-        this.getCategoryAproxData();
+        await this.getCategoryAproxData();
     
         Promise.all([scrapboyandgirlValues(this.state.category), scrapdiagnosisdispositionValues(this.state.category)])
         .then(([barChartValues, pieChartValue])=>{
