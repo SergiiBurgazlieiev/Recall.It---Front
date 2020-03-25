@@ -51,7 +51,7 @@ class Neiss extends Component {
     async componentDidMount(){
         const result = getData();
         console.log(result, 'RESULT OF CALLING GET DATA IN NEISS');
-        //await this.getCategoryAproxData(); 
+        
 
 
         Promise.all([scrapboyandgirlValues(this.state.category), scrapdiagnosisdispositionValues(this.state.category)])
