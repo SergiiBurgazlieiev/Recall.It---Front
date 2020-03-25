@@ -25,34 +25,30 @@ class Neiss extends Component {
 
     getCategoryAproxData = async () => {
         let { category } = parseQueryString();
-        if(category) {
-            let categories = category.split('_');
-            let categoryDetails = '';
-            let categoryAprox;
-            for (let i = 0; i < categories.length; i++) {
-                categoryAprox = await scrapCategoryApprox({
-                category: decodeURI(category)
-                }).then(response => {
-                    console.log(response);
-                    this.setState({
-                        category: {'category': response.category_approx }
-                    });
-                }).catch(err => {
-                    console.log(err);
+        let categories = category.split('_');
+        let categoryDetails = '';
+        let categoryAprox;
+        for (let i = 0; i < categories.length; i++) {
+            categoryAprox = await scrapCategoryApprox({
+            category: decodeURI(category)
+            }).then(response => {
+                console.log(response);
+                this.setState({
+                    category: {'category': response.category_approx }
                 });
+            }).catch(err => {
+                console.log(err);
+            });
 
-                categoryDetails = await scrapCategoryDetails({
-                category: get(categoryAprox, 'category_approx', '')
-                });
-                if (get(categoryDetails, 'results_category', []).length > 0) break;
-            }
-
+            categoryDetails = await scrapCategoryDetails({
+            category: get(categoryAprox, 'category_approx', '')
+            });
+            if (get(categoryDetails, 'results_category', []).length > 0) break;
         }
-        
     };
 
     async componentDidMount(){
-        await this.getCategoryAproxData();
+        this.getCategoryAproxData();
     
         Promise.all([scrapboyandgirlValues(this.state.category), scrapdiagnosisdispositionValues(this.state.category)])
         .then(([barChartValues, pieChartValue])=>{
@@ -147,6 +143,7 @@ class Neiss extends Component {
     }
 
     render(){
+        console.log('CATEGORY FROM NEISS STATE IS', this.state.category);
         return(
             <Fragment>
                 <ChartsPie data={this.getPieChartsData} />
