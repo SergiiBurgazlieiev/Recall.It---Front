@@ -11,8 +11,12 @@ import { parseQueryString } from "../../utils";
 export const getData = async () => {
   let { by, title, category } = parseQueryString();
 
-  let categories = category.split("_");
-
+  let categories;
+  
+  if(category){
+    categories = category.split("_");
+  }
+  
   let dataByTitle = await scrapTitleDetails({ title: decodeURI(title) });
 
   let manufacturerAprox = await scrapManufacturerApprox({
@@ -22,11 +26,11 @@ export const getData = async () => {
     manufacturer: manufacturerAprox.manufacturer_approx
   });
   let categoryDetails = "";
+  let categoryAprox;
   for (let i = 0; i < categories.length; i++) {
-    let categoryAprox = await scrapCategoryApprox({
+    categoryAprox = await scrapCategoryApprox({
       category: decodeURI(category)
-    })
-
+    });
     categoryDetails = await scrapCategoryDetails({
       category: get(categoryAprox, "category_approx", "")
     });
@@ -45,7 +49,8 @@ export const getData = async () => {
   return {
     productsByManufacturer,
     productsByName,
-    productsByType
+    productsByType,
+    categ: categoryAprox
   };
 };
 

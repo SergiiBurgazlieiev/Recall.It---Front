@@ -3,10 +3,11 @@ import ChartsPie from './charts/ChartsPie';
 import ChartsBar from './charts/ChartsBar';
 import randomColor from 'randomcolor';
 import { scrapboyandgirlValues, scrapdiagnosisdispositionValues } from '../../../apis/product';
+import { getData } from '../../Layout/utils';
 //This import needed in order to recieve 'category_aprox';
-import get from 'lodash/get';
-import { scrapCategoryApprox, scrapCategoryDetails } from '../../../apis/product';
-import { parseQueryString } from '../../../utils/index';
+// import get from 'lodash/get';
+// import { scrapCategoryApprox, scrapCategoryDetails } from '../../../apis/product';
+// import { parseQueryString } from '../../../utils/index';
 
 class Neiss extends Component {
     constructor(props){
@@ -22,32 +23,41 @@ class Neiss extends Component {
         }
     }
 
-    getCategoryAproxData = async () => {
-        let { category } = parseQueryString();
-        let categories = category.split('_');
-        let categoryDetails = '';
-        let categoryAprox;
-        for (let i = 0; i < categories.length; i++) {
-            categoryAprox = await scrapCategoryApprox({
-            category: decodeURI(category)
-            }).then(response => {
-                console.log(response);
-                this.setState({
-                    category: {'category': response.category_approx }
-                });
-            }).catch(err => {
-                console.log(err);
-            });
+    // getCategoryAproxData = async () => {
+    //     let { category } = parseQueryString();
+    //     let categories = category.split('_');
+    //     let categoryDetails = '';
+    //     let categoryAprox;
+    //     for (let i = 0; i < categories.length; i++) {
+    //         categoryAprox = await scrapCategoryApprox({
+    //         category: decodeURI(category)
+    //         }).then(response => {
+    //             console.log(response);
+    //             this.setState({
+    //                 category: {'category': response.category_approx }
+    //             });
+    //         }).catch(err => {
+    //             console.log(err);
+    //         });
 
-            categoryDetails = await scrapCategoryDetails({
-            category: get(categoryAprox, 'category_approx', '')
-            });
-            if (get(categoryDetails, 'results_category', []).length > 0) break;
-        }
-    };
+    //         categoryDetails = await scrapCategoryDetails({
+    //         category: get(categoryAprox, 'category_approx', '')
+    //         });
+    //         if (get(categoryDetails, 'results_category', []).length > 0) break;
+    //     }
+    // };
 
-    async componentDidMount(){
-        await this.getCategoryAproxData();
+    componentDidMount(){
+        getData()
+        .then(data =>{
+            console.log('FROM GET DATA', data);
+        })
+        .catch(e => {
+            console.log(e);
+        })
+
+        
+        //await this.getCategoryAproxData();
     
         Promise.all([scrapboyandgirlValues(this.state.category), scrapdiagnosisdispositionValues(this.state.category)])
         .then(([barChartValues, pieChartValue])=>{
