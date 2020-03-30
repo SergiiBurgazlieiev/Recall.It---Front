@@ -9,10 +9,10 @@ import {
 import { parseQueryString } from "../../utils";
 
 export const getData = async () => {
-  let { by, title, category } = parseQueryString();
+  let { by, title, category } = await parseQueryString();
 
   let categories;
-  
+
   if(category){
     categories = category.split("_");
   }
@@ -26,9 +26,8 @@ export const getData = async () => {
     manufacturer: manufacturerAprox.manufacturer_approx
   });
   let categoryDetails = "";
-  let categoryAprox;
   for (let i = 0; i < categories.length; i++) {
-    categoryAprox = await scrapCategoryApprox({
+    let categoryAprox = await scrapCategoryApprox({
       category: decodeURI(category)
     });
     categoryDetails = await scrapCategoryDetails({
@@ -50,7 +49,6 @@ export const getData = async () => {
     productsByManufacturer,
     productsByName,
     productsByType,
-    categ: categoryAprox
   };
 };
 
