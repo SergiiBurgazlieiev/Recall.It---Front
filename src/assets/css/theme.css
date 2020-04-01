@@ -46,7 +46,7 @@
 
 .logo_window{
   position:absolute;
-  bottom: 10%;
+  bottom: 0%;
 }
 
 .logo img {
@@ -57,7 +57,7 @@
 
 .resultWindow {
   position: absolute;
-  top: -25%;
+  top: -26%;
   left: 1%;
   background-color: #599bff;
   width: 80%;
