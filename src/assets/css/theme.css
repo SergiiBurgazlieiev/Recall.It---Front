@@ -75,14 +75,13 @@
 }
 .loading{
   display:block;
-  position:absolute;
-  bottom:100%;
   background-color:lightgrey;
   padding:1rem;
   width:16rem;
   border-radius:5px;
   left:1%;
-  height: 5rem;
+  height: 1rem;
+  margin-bottom:1rem;
 }
 
 .none{

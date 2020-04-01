@@ -7,15 +7,11 @@ export default ({ showResults, icon, requested }) => {
 	function toggleClass(){
 		setHovered(!hovered);
 	}
-			//	<div className={btnClass}>
 
 	if(icon === iconLoad && requested == false){
 
 		return <div className="logo_window">
-
-				<div className="loading">
-					<span>We are gathering results for you</span>
-				</div>
+					<span className={btnClass}>We are gathering results for you ...</span>
     				<div className="logo">
       					<img src={icon} alt="icon" onMouseEnter={toggleClass} onMouseLeave={toggleClass}/>
   					</div>
