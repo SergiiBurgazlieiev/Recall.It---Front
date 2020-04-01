@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import get from "lodash/get";
 
 export default ({ resultsOff, ...props }) => {
@@ -20,10 +20,12 @@ export default ({ resultsOff, ...props }) => {
     }
   ];
 
+  const [productNameVal,setProductNameVal] = useState([]); 
+
   let elem = [];
-  let handleProdNameVal = value => {
+  let handleProdNameVal = (value) => {
     elem.push(value);
-    return elem;
+    return null
   };
 
   return (
@@ -54,9 +56,12 @@ export default ({ resultsOff, ...props }) => {
           >
             Found {get(props, item.propsName, "")} recalls by {item.by}
           </p>
-
           }
         })}
+          {handleProdNameVal("Neiss")}
+          <p className="productLinks" data-value="Neiss" onClick={ e => {
+            resultsOff(e.target.dataset.value, elem)
+          }}>Click here to learn more about emergency rooms related to this category</p>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import iconRisky from "../../assets/images/risky.png";
 import iconMed from "../../assets/images/medium.png";
 import iconNeut from "../../assets/images/neutral.png";
 import iconNon from "../../assets/images/none.png";
+import iconLoad from "../../assets/images/001gif.gif";
 
 export default () => {
   const [displayProductsResult, setDisplayProductsResult] = useState(false);
@@ -18,14 +19,14 @@ export default () => {
     productsByType: [],
     productsByManufacturer: []
   });
-
+  const [requested, setRequested] = useState(false);
   const [framseState, setFrameState] = useState({
     fullscreen: false,
     maxContentHeight: document.body.offsetHeight
   });
   const [parentIframe, setParentIframe] = useState(null);
   const [parentDisableAutoSize, setParentDisableAutoSize] = useState(false);
-  const [icon, setIcon] = useState(iconNeut);
+  const [icon, setIcon] = useState(iconLoad);
   const [productName, setProductName] = useState([]);
 
   useEffect(() => {
@@ -50,24 +51,32 @@ export default () => {
         let {
           productsByName,
           productsByType,
-          productsByManufacturer
+          productsByManufacturer,
+          dataChats
         } = await getData();
 
         setState({
           productsByName,
           productsByType,
-          productsByManufacturer
+          productsByManufacturer,
+          dataChats
         });
+        //after request is completed 
+        // change the icon 
+
         if (productsByManufacturer.length > 5 && productsByType.length > 5) {
           setIcon(iconMed);
+          setRequested(true);
         } else if (productsByName.length > 0) {
           setIcon(iconRisky);
+          setRequested(true);
         } else if (
           productsByName.length === 0 &&
           productsByType.length === 0 &&
           productsByManufacturer.length === 0
         ) {
           setIcon(iconNon);
+          setRequested(true);
         } else setIcon(iconNeut);
       } catch (e) {
         console.log(e);
@@ -91,6 +100,7 @@ export default () => {
     updateSize();
   }, [displayProductsResult, displayListOfProducts, parentIframe]);
 
+  console.log(requested);
   return (
     <div className="App">
       {displayProductsResult ? (
@@ -114,6 +124,7 @@ export default () => {
             state.productsByType,
             state.productsByManufacturer
           ]}
+          dataChats={state.dataChats}
           prdName={productName}
         />
       ) : null}
@@ -122,6 +133,7 @@ export default () => {
           setDisplayProductsResult(!displayProductsResult);
           setDisplayListOfProducts(false);
         }}
+        requested={requested}
         icon={icon}
       />
     </div>
