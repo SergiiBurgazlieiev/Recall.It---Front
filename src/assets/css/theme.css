@@ -57,11 +57,11 @@
 
 .resultWindow {
   position: absolute;
-  top: 40%;
+  top: -25%;
   left: 1%;
   background-color: #599bff;
   width: 80%;
-  height: 30%;
+  height: 76%;
   border-radius: 5px;
   padding: 1rem;
   color: #f2f5f3;
