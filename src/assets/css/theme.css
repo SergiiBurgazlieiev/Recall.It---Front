@@ -57,7 +57,7 @@
 
 .resultWindow {
   position: absolute;
-  bottom: 10%;
+  top: 40%;
   left: 1%;
   background-color: #599bff;
   width: 80%;
