@@ -18,7 +18,7 @@ export default ({ showResults, icon, requested }) => {
  				</div>
 	}else{
 		return  <div className="logo_window">
-					<span className={btnClass}>We are gathering results for you ...</span>
+					<span className="loading">We are gathering results for you ...</span>
     				<div className="logo">
       					<img src={icon} alt="icon" onClick={() => showResults()} />
   					</div>
