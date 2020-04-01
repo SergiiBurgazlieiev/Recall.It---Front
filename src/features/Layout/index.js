@@ -77,7 +77,10 @@ export default () => {
         ) {
           setIcon(iconNon);
           setRequested(true);
-        } else setIcon(iconNeut);
+        } else {
+          setIcon(iconNeut);
+          setRequested(true);
+        }
       } catch (e) {
         console.log(e);
       }

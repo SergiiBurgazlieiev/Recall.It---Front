@@ -29,8 +29,7 @@ export default ({ resultsOff, ...props }) => {
   };
 
   return (
-    <div>
-      <div className="resultWindow">
+    <div className="resultWindow">
         <div>
           <h3>Recall.it</h3>
         </div>
@@ -59,10 +58,9 @@ export default ({ resultsOff, ...props }) => {
           }
         })}
           {handleProdNameVal("Neiss")}
-          <p className="productLinks" data-value="Neiss" onClick={ e => {
+          <p id="neissLink" className="productLinks" data-value="Neiss" onClick={ e => {
             resultsOff(e.target.dataset.value, elem)
           }}>Click here to learn more about emergency rooms related to this category</p>
-      </div>
     </div>
   );
 };
