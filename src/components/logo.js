@@ -21,7 +21,7 @@ export default ({ showResults, icon, requested }) => {
 	}else{
 		return  <div className="logo_window">
     				<div className="logo">
-    					<span className"loading">We are loading</span>
+    					<span className="loading">We are loading</span>
       					<img src={icon} alt="icon" onClick={() => showResults()} />
   					</div>
  				</div>
