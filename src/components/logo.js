@@ -19,15 +19,11 @@ export default ({ showResults, icon, requested }) => {
   					</div>
  				</div>
 	}else{
-		return <>  
-				<div className="resultWindow">
-					<span className={btnClass}>We are gathering results for you ...</span>
-				</div>
-    				
-    			<div className="logo">
-      				<img src={icon} alt="icon" onClick={() => showResults()} />
-  				</div>
- 			</>
+		return  <div className="logo_window">
+    				<div className="logo">
+      					<img src={icon} alt="icon" onClick={() => showResults()} />
+  					</div>
+ 				</div>
 	}
 			
 };
