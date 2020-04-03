@@ -63,23 +63,19 @@ export default () => {
         });
         //after request is completed 
         // change the icon 
-
+        setRequested(true);
         if (productsByManufacturer.length > 5 && productsByType.length > 5) {
           setIcon(iconMed);
-          setRequested(true);
         } else if (productsByName.length > 0) {
           setIcon(iconRisky);
-          setRequested(true);
         } else if (
           productsByName.length === 0 &&
           productsByType.length === 0 &&
           productsByManufacturer.length === 0
         ) {
           setIcon(iconNon);
-          setRequested(true);
         } else {
           setIcon(iconNeut);
-          setRequested(true);
         }
       } catch (e) {
         console.log(e);
