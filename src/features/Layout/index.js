@@ -8,6 +8,7 @@ import iconRisky from "../../assets/images/risky.png";
 import iconMed from "../../assets/images/medium.png";
 import iconNeut from "../../assets/images/neutral.png";
 import iconNon from "../../assets/images/none.png";
+import iconLoad from "../../assets/images/001gif.gif";
 
 export default () => {
   const [displayProductsResult, setDisplayProductsResult] = useState(false);
@@ -18,14 +19,14 @@ export default () => {
     productsByType: [],
     productsByManufacturer: []
   });
-
+  const [requested, setRequested] = useState(false);
   const [framseState, setFrameState] = useState({
     fullscreen: false,
     maxContentHeight: document.body.offsetHeight
   });
   const [parentIframe, setParentIframe] = useState(null);
   const [parentDisableAutoSize, setParentDisableAutoSize] = useState(false);
-  const [icon, setIcon] = useState(iconNeut);
+  const [icon, setIcon] = useState(iconLoad);
   const [productName, setProductName] = useState([]);
 
   useEffect(() => {
@@ -60,6 +61,9 @@ export default () => {
           productsByManufacturer,
           dataChats
         });
+        //after request is completed 
+        // change the icon 
+        setRequested(true);
         if (productsByManufacturer.length > 5 && productsByType.length > 5) {
           setIcon(iconMed);
         } else if (productsByName.length > 0) {
@@ -70,7 +74,9 @@ export default () => {
           productsByManufacturer.length === 0
         ) {
           setIcon(iconNon);
-        } else setIcon(iconNeut);
+        } else {
+          setIcon(iconNeut);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -93,6 +99,7 @@ export default () => {
     updateSize();
   }, [displayProductsResult, displayListOfProducts, parentIframe]);
 
+  console.log(requested);
   return (
     <div className="App">
       {displayProductsResult ? (
@@ -125,6 +132,7 @@ export default () => {
           setDisplayProductsResult(!displayProductsResult);
           setDisplayListOfProducts(false);
         }}
+        requested={requested}
         icon={icon}
       />
     </div>

@@ -30,13 +30,14 @@ export default ({ resultsOff, ...props }) => {
 
   return (
     <div>
-      <div className="resultWindow">
+    <div className="resultWindow">
         <div>
           <h3>Recall.it</h3>
         </div>
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
             {handleProdNameVal(item.name)}
+
 
             return  <p
             className="productLinks"
