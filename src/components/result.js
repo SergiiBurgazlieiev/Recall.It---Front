@@ -29,6 +29,7 @@ export default ({ resultsOff, ...props }) => {
   };
 
   return (
+    <div>
     <div className="resultWindow">
         <div>
           <h3>Recall.it</h3>
@@ -36,6 +37,7 @@ export default ({ resultsOff, ...props }) => {
         {elements.map((item, key) => {
           if(get(props, item.propsName, "") !== 0){
             {handleProdNameVal(item.name)}
+
 
             return  <p
             className="productLinks"
@@ -61,6 +63,7 @@ export default ({ resultsOff, ...props }) => {
           <p id="neissLink" className="productLinks" data-value="Neiss" onClick={ e => {
             resultsOff(e.target.dataset.value, elem)
           }}>Click here to learn more about emergency rooms related to this category</p>
+    </div>
     </div>
   );
 };
