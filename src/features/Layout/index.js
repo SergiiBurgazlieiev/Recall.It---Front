@@ -50,13 +50,15 @@ export default () => {
         let {
           productsByName,
           productsByType,
-          productsByManufacturer
+          productsByManufacturer,
+          dataChats
         } = await getData();
 
         setState({
           productsByName,
           productsByType,
-          productsByManufacturer
+          productsByManufacturer,
+          dataChats
         });
         if (productsByManufacturer.length > 5 && productsByType.length > 5) {
           setIcon(iconMed);
@@ -114,6 +116,7 @@ export default () => {
             state.productsByType,
             state.productsByManufacturer
           ]}
+          dataChats={state.dataChats}
           prdName={productName}
         />
       ) : null}

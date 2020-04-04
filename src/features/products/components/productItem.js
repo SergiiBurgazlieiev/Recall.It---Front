@@ -4,6 +4,9 @@ import moment from "moment";
 
 export default ({ product }) => {
   const [showDetails, setShowDetails] = useState(false);
+  console.log("get product")
+  console.log(get(product, "Title", ""));
+  console.log(get(product, "", ""));
   return (
     <div style={{ marginBottom: "13px" }}>
       <div
@@ -19,9 +22,16 @@ export default ({ product }) => {
           className="imgWindow"
         />
         <div style={{}}>
-
-          <a href={get(product, "URL", "")}>{get(product, "Title", "")}</a>
-
+          <p>
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href={get(product, "url", "")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {get(product, "title", "")}
+            </a>
+          </p>
           <p
             style={{
               width: "173px",
@@ -42,7 +52,7 @@ export default ({ product }) => {
           {showDetails && (
             <div>
               <p>
-                <b>Hazard</b> {get(product, "title", "")}{" "}
+                <b>Hazard</b> {get(product, "hazard", "")}{" "}
               </p>
               <p>
                 <b>Description</b> {get(product, "description", "")}{" "}
