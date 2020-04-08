@@ -48,3 +48,10 @@ export const scrapdiagnosisdispositionValues = data => {
     data
   );
 };
+
+export const srapforecast = data => {
+  return post(
+    "https://recallit-back.herokuapp.com/scraping/get/forecast_er",
+    data
+  );
+};
