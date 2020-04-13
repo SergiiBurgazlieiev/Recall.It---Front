@@ -43,7 +43,7 @@
   text-decoration: underline;
 }
 
-.productLinks:hover{
+/* .productLinks:hover{
 text-decoration: underline;
 cursor:pointer;
 }
@@ -51,6 +51,6 @@ cursor:pointer;
 .productNoLinks:hover{
   cursor: auto ;
   text-decoration: none;
-}
+} */
 
 

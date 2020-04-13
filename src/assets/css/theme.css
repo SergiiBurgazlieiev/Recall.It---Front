@@ -50,16 +50,17 @@
   cursor: pointer;
 }
 
-.resultWindow {
+/* .resultWindow {
   position: absolute;
   bottom: 25%;
   left: 1%;
-  background-color: #599bff;
+  background-color: #e7f9ff;
   width: 80%;
+  border: 3px solid lightgray;
   border-radius: 5px;
   padding: 1rem;
-  color: #f2f5f3;
-}
+  color: #2c2c2c;
+} */
 
 .imgWindow {
   width: 70px;
@@ -70,11 +71,12 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Lato', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 code {
