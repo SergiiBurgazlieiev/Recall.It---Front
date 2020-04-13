@@ -23,7 +23,7 @@
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 1px;
-    transition: all .3s ease-in;
+    transition: all .3s ease;
 }
 
 .ProductsLink:hover,
