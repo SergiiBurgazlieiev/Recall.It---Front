@@ -1,14 +1,13 @@
-import React from 'react';
-import Neiss from './neiss/Neiss';
+import React from "react";
+import Neiss from "./neiss/Neiss";
 
-import styles from './Analytics.module.css';
+import styles from "./Analytics.module.css";
 
 const App = () => {
     return (
         <div className={styles.Analytics}>
-            {/* <Neiss/>  */}
+            <Neiss/> 
         </div>
     );
 }
 
-export default App;

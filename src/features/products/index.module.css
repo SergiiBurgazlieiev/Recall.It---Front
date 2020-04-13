@@ -1,0 +1,11 @@
+.ListOfProducts {
+    margin: 0 auto;
+    position: fixed;
+    background-color: #e7f9ff;
+    top: 24%;
+    left: 1%;
+    width: 99%;
+    border-radius: 1rem;
+    height: 68%;
+    overflow-y: scroll;
+}

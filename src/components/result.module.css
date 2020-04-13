@@ -1,0 +1,36 @@
+.ResultWindow {
+    position: absolute;
+    bottom: 25%;
+    left: 1%;
+    background-color: #e7f9ff;
+    width: 80%;
+    border: 3px solid #d3d3d3;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #2c2c2c;
+}
+
+.LinksContainer {
+    height: auto;
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.ProductsLink:link,
+.Neiss:link {
+    height: auto;
+    width: auto;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: all .3s ease;
+}
+
+.ProductsLink:hover,
+.ProductsLink:active,
+.Neiss:hover,
+.Neiss:active {
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer;
+}
