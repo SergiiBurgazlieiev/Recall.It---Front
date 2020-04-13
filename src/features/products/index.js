@@ -5,6 +5,7 @@ import ProductFilter from "./components/productFilter";
 import Analytics from './Analytics';
 import "./ressources/style.css";
 
+import styles from './index.module.css';
 
 export default ({ prdValue, productsData, prdName }) => {
   const [filterBy, setFilterBy] = useState(prdValue);
@@ -22,7 +23,8 @@ export default ({ prdValue, productsData, prdName }) => {
   };
 
   return (
-    <div className="listOfProducts">
+    // <div className="listOfProducts">
+    <div className={styles.ListOfProducts}>
       <ProductFilter
         prdLinks={prdName}
         handleClick={e => {
