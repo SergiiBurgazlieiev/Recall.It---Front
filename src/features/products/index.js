@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import get from "lodash/get";
 import ProductItem from "./components/productItem";
 import ProductFilter from "./components/productFilter";
-import Analytics from './Analytics';
+import Analytics from "./Analytics";
 import "./ressources/style.css";
 
 import styles from './index.module.css';
@@ -31,17 +31,18 @@ export default ({ prdValue, productsData, prdName }) => {
           setFilterBy(e.currentTarget.textContent);
         }}
       />
-    {/*if current link is not Neiss return ProductItem component*/}
-      {filterBy !== 'Neiss' ? (
-         <div className="productContainer">
-             {getProducts(filterBy).map((product, key) => (
-                <ProductItem key={key} product={product} />
-             ))}
-         </div>
-      ):  <div className="productContainer">
-            <Analytics />
-          </div>
-      }
+      {/*if current link is not Neiss return ProductItem component*/}
+      {filterBy !== "Neiss" ? (
+        <div className="productContainer">
+          {getProducts(filterBy).map((product, key) => (
+            <ProductItem key={key} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className="productContainer">
+          <Analytics dataChats={dataChats} />
+        </div>
+      )}
     </div>
   );
 };

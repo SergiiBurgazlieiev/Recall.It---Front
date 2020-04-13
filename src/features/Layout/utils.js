@@ -4,7 +4,9 @@ import {
   scrapCategoryDetails,
   scrapManufacturerApprox,
   scrapManufacturerDetails,
-  scrapTitleDetails
+  scrapTitleDetails,
+  scrapboyandgirlValues,
+  scrapdiagnosisdispositionValues
 } from "../../apis/product";
 import { parseQueryString } from "../../utils";
 
@@ -22,8 +24,9 @@ export const getData = async () => {
     manufacturer: manufacturerAprox.manufacturer_approx
   });
   let categoryDetails = "";
+  let categoryAprox;
   for (let i = 0; i < categories.length; i++) {
-    let categoryAprox = await scrapCategoryApprox({
+    categoryAprox = await scrapCategoryApprox({
       category: decodeURI(category)
     });
     categoryDetails = await scrapCategoryDetails({
@@ -41,10 +44,25 @@ export const getData = async () => {
   let productsByName = get(dataByTitle, "results_title", []);
   let productsByType = get(categoryDetails, "results_category", []);
 
+  let barChartValues = await scrapboyandgirlValues({
+    category: get(categoryAprox, "category_approx", category[0])
+  });
+  let pieChartValue = await scrapdiagnosisdispositionValues({
+    category: get(categoryAprox, "category_approx", category[0])
+  });
+  console.log(pieChartValue);
   return {
     productsByManufacturer,
     productsByName,
-    productsByType
+    productsByType,
+    dataChats: {
+      boysCount: get(barChartValues, "boy_values", ""),
+      girlsCount: get(barChartValues, "girl_values", ""),
+      diagnosisLabel: get(pieChartValue, ["diagnosis_values", "0"], ""),
+      diagnosisData: get(pieChartValue, ["diagnosis_values", "1"]),
+      dispositionLabel: get(pieChartValue, ["disposition_values", "0"]),
+      dispositionData: get(pieChartValue, ["disposition_values", "1"])
+    }
   };
 };
 
